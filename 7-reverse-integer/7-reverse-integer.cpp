@@ -1,32 +1,16 @@
-// consider while reversing the reversed number can be greater than INT_MAX or less than INT_MIN in case of -ve number
-//  In this case return 0 . 
-
-class Solution 
-{
-public:
-    int reverse(int x) 
-    {
-        int reverse = 0;
-        int num = x;
-        
-        while (num != 0)
+class Solution{
+    public:
+    int reverse(int x){
+        int ans=0;
+        while(x!=0)
         {
-            int ld = num % 10; // last digit
-            num = num / 10;
-            
-            // Check for overflow
-            if (reverse > INT_MAX/10 || ((reverse == INT_MAX/10) && (ld > INT_MAX % 10)) )
-            {
-                return 0;
+             int digit = x%10;
+            if((ans>INT_MAX/10) || (ans<INT_MIN/10))
+            {return 0;
             }
-            // Check for underflow for -ve numbers
-            if (reverse < INT_MIN/10  || (reverse == INT_MIN/10  && ld < INT_MIN % 10))
-            {
-                return 0;
-            }
-            reverse = (reverse * 10) + ld;
-        }
-        
-        return reverse;
-    }
+            ans = (ans*10)+digit;
+            x/=10;
+         
+        }return ans;
+    } 
 };
