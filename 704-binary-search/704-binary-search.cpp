@@ -1,38 +1,40 @@
+//Normal Binary Search method
 class Solution {
 public:
     int search(vector<int>& nums, int target) {
-        int str=0,end=nums.size();
-        int mid=str+((end-str)/2);
+        int left=0,end=nums.size();
+        int mid=left+((end-left)/2);
+        //condition 1 so that it does not go to infinite loop on giving 1 input as array
         if(end==1)
         {
-            while(str<end)
+            while(left<end)
         {
             if(nums[mid]==target)
             {
                 return mid;
             }
             else if(nums[mid]<target){
-                str=mid+1;
+                left=mid+1;
             }
             else{
                 end=mid-1;
-            }mid=str+((end-str)/2);
+            }mid=left+((end-left)/2);
         }return -1;
         }
-        
+        //condition 2 for rest of the array
         else {
-            while(str<=end)
+            while(left<=end)
         {
             if(nums[mid]==target)
             {
                 return mid;
             }
             else if(nums[mid]<target){
-                str=mid+1;
+                left=mid+1;
             }
             else{
                 end=mid-1;
-            }mid=str+((end-str)/2);
+            }mid=left+((end-left)/2);
         }return -1;}
     }
 };
